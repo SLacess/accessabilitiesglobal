@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AccessAbilities Global — Web Accessibility LATAM (AR • CL • PY)</title>
+  <meta name="description" content="Solución de accesibilidad web con widget + auditoría humana. Cumple WCAG 2.1/2.2 y las leyes de Argentina, Chile y Paraguay. Demo gratuita." />
+  <meta name="keywords" content="accesibilidad web, WCAG, inclusión digital, accesibilidad Chile, accesibilidad Argentina, Paraguay" />
+  <meta property="og:title" content="AccessAbilities Global — Web Accessibility LATAM" />
+  <meta property="og:description" content="Incluye a todas las personas, cumple la ley y vende más. Widget + Auditoría + Certificado. Demo gratuita." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og.jpg" />
+  <meta property="og:url" content="https://accessabilitiesglobal.com" />
+  <meta name="theme-color" content="#0E2257" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0a1224; --panel:#0e1a38; --panel2:#12224a; --text:#edf1ff; --muted:#a9b7ff; --accent:#4ad0ff; --accent2:#56f3c1; --stroke:#25335c; --cta:#ffb703; --ctaText:#111; --focus:#fff }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#0b1530 25%,#0a1224);color:var(--text);line-height:1.55}
+    a{color:var(--accent)}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:#000;color:#fff;padding:8px 12px;z-index:999;border-radius:8px}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:#0a1224d9;border-bottom:1px solid var(--stroke);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    img.logo{width:36px;height:36px;border-radius:10px;object-fit:cover;box-shadow:0 0 20px #56f3c180}
+    .brand h1{font-size:18px;margin:0}
+    .nav a{color:var(--text);text-decoration:none;opacity:.9}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .lang{display:flex;gap:8px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid transparent;background:var(--accent);color:#001018;font-weight:700;text-decoration:none;cursor:pointer}
+    .btn.secondary{background:transparent;border-color:var(--accent);color:var(--text)}
+    .btn.cta{background:var(--cta);color:var(--ctaText)}
+    .btn:focus{outline:3px solid var(--focus);outline-offset:2px}
+
+    .hero{position:relative;overflow:hidden}
+    .hero .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:64px 0}
+    .badge{display:inline-block;background:#132754;border:1px solid var(--stroke);color:#a9b7ff;padding:6px 10px;border-radius:999px;font-size:12px}
+    h2.xl{font-size:42px;line-height:1.15;margin:.4rem 0 1rem}
+    p.lead{font-size:18px;color:#d8e1ff}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .media{position:relative;background:linear-gradient(180deg,#0b204f,#0c2b5e);border:1px solid var(--stroke);border-radius:18px;padding:12px}
+    .screen{aspect-ratio:16/10;border-radius:12px;background:#0e1a38;display:grid;place-items:center;border:1px solid #203263;overflow:hidden}
+    .screen img{width:100%;height:100%;object-fit:cover;display:block}
+    .chipbar{position:absolute;inset:auto 12px 12px 12px;display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:#0f1f46;border:1px solid #25335c;color:#cfe1ff;border-radius:999px;padding:6px 10px;font-size:12px}
+
+    section{padding:56px 0;border-top:1px solid var(--stroke)}
+    h3{font-size:28px;margin:0 0 12px}
+    .grid{display:grid;gap:18px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--stroke);border-radius:18px;padding:18px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .plan{background:linear-gradient(180deg,#0e1a38,#0f1c3c);border:1px solid var(--stroke);border-radius:18px;padding:20px;display:flex;flex-direction:column}
+    .price{font-size:32px;font-weight:800;margin:6px 0}
+    .plan ul{list-style:none;padding:0;margin:10px 0 16px;display:grid;gap:8px}
+    .plan li{display:flex;align-items:start}
+    .plan .btn{margin-top:auto}
+    .plan.best{outline:2px solid var(--cta);box-shadow:0 0 0 4px #ffb70320}
+    .tag{display:inline-block;background:#ffb70320;border:1px solid #ffb70370;color:#ffdd9a;padding:4px 8px;border-radius:8px;font-size:12px;margin-left:6px}
+
+    .country{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .country .card p{margin:.2rem 0}
+
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    blockquote{margin:0}
+    cite{display:block;color:#c7d6ff;margin-top:6px;font-style:normal}
+
+    .faq{display:grid;gap:12px}
+    details{background:linear-gradient(180deg,#0e1a38,#0f1c3c);border:1px solid var(--stroke);border-radius:12px;padding:12px}
+    summary{cursor:pointer;font-weight:600}
+
+    form{display:grid;gap:12px}
+    label{font-weight:600}
+    input,select,textarea{background:#0b1530;border:1px solid #244; color:#eaf2ff;padding:12px;border-radius:10px;width:100%}
+    input:focus,select:focus,textarea:focus{outline:3px solid var(--focus);outline-offset:1px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{color:#cbd6ff;font-size:14px}
+
+    footer{padding:28px 0;border-top:1px solid var(--stroke);color:#c5d3ff}
+    .foot{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}
+
+    @media (max-width: 960px){
+      .hero .wrap{grid-template-columns:1fr}
+      .plans,.country,.testimonials{grid-template-columns:1fr}
+      .cols-3{grid-template-columns:1fr}
+      .cols-2{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+    }
+    [data-theme="high"]{--bg:#000;--panel:#000;--panel2:#000;--text:#fff;--muted:#ddd;--accent:#fff;--accent2:#fff;--stroke:#333;--cta:#fff;--ctaText:#000;--focus:#fff}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Principal">
+      <div class="brand" aria-label="Marca">
+        <img class="logo" src="/assets/logo.png" alt="AccessAbilities Global logo" width="36" height="36" />
+        <h1>AccessAbilities Global</h1>
+      </div>
+      <nav aria-label="Secciones">
+        <ul>
+          <li><a href="#como">Cómo funciona</a></li>
+          <li><a href="#planes">Precios</a></li>
+          <li><a href="#leyes">Leyes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="lang" aria-label="Preferencias">
+        <button class="btn secondary" id="toggleLang" aria-pressed="false" aria-label="Cambiar idioma">ES / PT</button>
+        <button class="btn secondary" id="contrast" aria-pressed="false" aria-label="Alto contraste">A↔A</button>
+        <a class="btn cta" href="#form">Reservar demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container wrap">
+        <div>
+          <span class="badge" data-i18n="badge">Widget + Auditoría humana</span>
+          <h2 class="xl" id="heroTitle" data-i18n="heroTitle">Haz tu sitio accesible hoy. Incluye a todas las personas, cumple la ley y vende más.</h2>
+          <p class="lead" data-i18n="heroSub">Accesibilidad automática + auditoría humana. Tu web lista para WCAG en días, no en meses.</p>
+          <div class="hero-cta">
+            <a class="btn cta" href="#form" data-i18n="ctaPrimary">Reservar demo gratuita</a>
+            <a class="btn secondary" href="#planes" data-i18n="ctaSecondary">Prueba gratis 7 días</a>
+          </div>
+          <p class="note" data-i18n="heroNote">Compatible con WordPress, Shopify, Wix y sitios a medida. Sin bloqueo de SEO. </p>
+        </div>
+        <div class="media" aria-hidden="true">
+          <div class="screen">
+            <img src="/assets/hero-a11y.png" alt="Avaliação de Maturidade da Acessibilidade 360º – composição visual com indicadores de 97,3% e 75% e consultora apresentando o painel" />
+          </div>
+          <div class="chipbar">
+            <span class="chip">Teclado</span>
+            <span class="chip">Contraste</span>
+            <span class="chip">Lectores de pantalla</span>
+            <span class="chip">Subtítulos</span>
+            <span class="chip">LIBRAS/LSM*</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEMA / BENEFICIOS -->
+    <section aria-labelledby="porQue">
+      <div class="container grid cols-3">
+        <div class="card"><h3 id="porQue" data-i18n="whyTitle">¿Por qué ahora?</h3><p data-i18n="why1">Más del 15% de la población tiene alguna discapacidad. Cada barrera de acceso es una venta perdida.</p></div>
+        <div class="card"><h3 data-i18n="benefTitle">Beneficios</h3><ul><li>✔ <span data-i18n="benef1">Cumplimiento legal + reputación ESG</span></li><li>✔ <span data-i18n="benef2">Más conversión y alcance</span></li><li>✔ <span data-i18n="benef3">Menos riesgo y soporte local</span></li></ul></div>
+        <div class="card"><h3 data-i18n="packTitle">Paquete completo</h3><p data-i18n="pack1">Widget + Auditoría WCAG + Reporte público + Certificado “Sitio Verificado”.</p></div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como" aria-labelledby="comoTitle">
+      <div class="container grid cols-3">
+        <div class="card"><h4 data-i18n="step1t">1) Instala en minutos</h4><p data-i18n="step1d">Insertamos un script ligero sin afectar el SEO ni la performance.</p></div>
+        <div class="card"><h4 data-i18n="step2t">2) Auditoría + correcciones</h4><p data-i18n="step2d">Revisamos WCAG 2.1/2.2 AA, entregamos un plan de mejoras y re-test.</p></div>
+        <div class="card"><h4 data-i18n="step3t">3) Certificado + seguimiento</h4><p data-i18n="step3d">Publicamos tu página de conformidad y acompañamos por 90 días.</p></div>
+      </div>
+    </section>
+
+    <!-- PLANES -->
+    <section id="planes" aria-labelledby="planesTitle">
+      <div class="container">
+        <h3 id="planesTitle" data-i18n="plansTitle">Planes y precios (USD)</h3>
+        <p class="note" data-i18n="plansNote">Ahorra 20–25% pagando anual. Cancela cuando quieras en los planes mensuales.</p>
+        <div class="plans" role="list">
+          <article class="plan" role="listitem" aria-label="Starter">
+            <h4>Starter</h4>
+            <div class="price">$39<span>/mes</span></div>
+            <div class="note">$375/año</div>
+            <ul>
+              <li>✔ 1 dominio, hasta 20k visitas/mes</li>
+              <li>✔ Informe mensual</li>
+              <li>✔ Auditoría inicial ligera (30 ítems)</li>
+              <li>✔ Soporte por email</li>
+            </ul>
+            <a class="btn" href="#form" aria-label="Elegir Starter">Empezar</a>
+          </article>
+          <article class="plan best" role="listitem" aria-label="Pro">
+            <h4>Pro <span class="tag" data-i18n="best">Más popular</span></h4>
+            <div class="price">$99<span>/mes</span></div>
+            <div class="note">$950/año</div>
+            <ul>
+              <li>✔ Hasta 100k visitas/mes, 2 idiomas</li>
+              <li>✔ Auditoría completa AA (120 ítems) + re-test</li>
+              <li>✔ Reporte público de conformidad</li>
+              <li>✔ Chat + email, 1 capacitación de 1h</li>
+            </ul>
+            <a class="btn cta" href="#form" aria-label="Elegir Pro">Probar Pro</a>
+          </article>
+          <article class="plan" role="listitem" aria-label="Business">
+            <h4>Business</h4>
+            <div class="price">$199<span>/mes</span></div>
+            <div class="note">$1.900/año</div>
+            <ul>
+              <li>✔ Hasta 300k visitas/mes</li>
+              <li>✔ 3 auditorías/año + acompañamiento mensual</li>
+              <li>✔ SLA 48h + documentación compras públicas</li>
+              <li>✔ Sello “WCAG Verificado”</li>
+            </ul>
+            <a class="btn" href="#form" aria-label="Elegir Business">Hablar con ventas</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEYES POR PAÍS -->
+    <section id="leyes" aria-labelledby="leyesTitle">
+      <div class="container">
+        <h3 id="leyesTitle" data-i18n="lawsTitle">Contexto legal (AR • CL • PY)</h3>
+        <div class="country">
+          <div class="card" aria-label="Argentina"><h4>Argentina</h4><p>Ley 26.653 y Decreto 656/2019 (portales públicos). Referencia: WCAG 2.1/2.2.</p><p class="note">En el sector privado, presión de ESG y buenas prácticas.</p></div>
+          <div class="card" aria-label="Chile"><h4>Chile</h4><p>Ley 20.422; recomendaciones SENADIS; WCAG como estándar técnico.</p><p class="note">Alto foco en gobierno y educación; privado en expansión.</p></div>
+          <div class="card" aria-label="Paraguay"><h4>Paraguay</h4><p>Sin norma digital fuerte → oportunidad de liderazgo adoptando WCAG voluntaria.</p><p class="note">Estrategia ideal: pilotos con sector público y banca/retail.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS / PRUEBAS -->
+    <section aria-labelledby="testiTitle">
+      <div class="container">
+        <h3 id="testiTitle" data-i18n="testTitle">Resultados que importan</h3>
+        <div class="testimonials">
+          <div class="card"><blockquote>“Reducimos en 68% los errores críticos de accesibilidad en 30 días.”</blockquote><cite>Universidad • CL</cite></div>
+          <div class="card"><blockquote>“+22% de conversión móvil tras optimizar contraste y foco.”</blockquote><cite>E‑commerce • AR</cite></div>
+          <div class="card"><blockquote>“Certificado WCAG visible en el footer elevó la confianza.”</blockquote><cite>Finanzas • PY</cite></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="faqTitle">
+      <div class="container">
+        <h3 id="faqTitle">FAQ</h3>
+        <div class="faq">
+          <details><summary>¿El widget afecta el SEO o la velocidad?</summary><p>Usamos script ligero, carga diferida y no bloqueamos indexación. Las mejoras de semántica y texto alternativo ayudan a SEO.</p></details>
+          <details><summary>¿Por qué auditoría humana además del widget?</summary><p>WCAG requiere decisiones de contenido/UX que la IA no resuelve sola (por ejemplo, jerarquías, etiquetas, foco). Mezclamos automatización + criterio experto.</p></details>
+          <details><summary>¿Cómo se emite el certificado “Sitio Verificado”?</summary><p>Tras cumplir el mínimo AA acordado, emitimos un informe público y un sello con enlace de verificación.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO LEADS / HUBSPOT -->
+    <section id="form" aria-labelledby="formTitle">
+      <div class="container cols-2 grid">
+        <div>
+          <h3 id="formTitle" data-i18n="formTitle">Reserva tu demo gratuita</h3>
+          <p class="note" data-i18n="formNote">Completa el formulario y te contactaremos en menos de 24h hábiles.</p>
+          <div id="hs-form" aria-live="polite"></div>
+          <div id="nativeFormWrap">
+            <form id="leadForm" novalidate>
+              <div class="form-row">
+                <div><label for="name" data-i18n="labelName">Nombre completo</label><input id="name" name="name" autocomplete="name" required /></div>
+                <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+              </div>
+              <div class="form-row">
+                <div><label for="company" data-i18n="labelCompany">Empresa</label><input id="company" name="company" autocomplete="organization" required /></div>
+                <div><label for="country" data-i18n="labelCountry">País</label>
+                  <select id="country" name="country" required>
+                    <option value="">—</option><option>Argentina</option><option>Chile</option><option>Paraguay</option><option>Brasil</option><option>Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div><label for="site" data-i18n="labelSite">URL del sitio</label><input id="site" name="site" type="url" placeholder="https://" required /></div>
+              <div><label for="plan">Plan</label>
+                <select id="plan" name="plan"><option>Pro ($99/mes)</option><option>Starter ($39/mes)</option><option>Business ($199/mes)</option><option>Enterprise</option></select>
+              </div>
+              <div><label for="msg" data-i18n="labelMsg">Mensaje</label><textarea id="msg" name="msg" rows="4" placeholder="Cuéntanos tu objetivo principal…"></textarea></div>
+              <button class="btn cta" type="submit" aria-live="polite" data-i18n="send">Enviar</button>
+              <p id="formStatus" class="note" role="status" aria-live="polite"></p>
+            </form>
+            <p class="note" style="margin-top:8px" data-i18n="privacy">Al enviar, aceptas nuestra política de privacidad y contacto comercial.</p>
+          </div>
+        </div>
+        <div class="card" aria-label="Seguridad y cumplimiento">
+          <h4 data-i18n="security">Seguridad & Cumplimiento</h4>
+          <ul><li>✔ WCAG 2.1/2.2 AA</li><li>✔ Informes exportables (PDF)</li><li>✔ Ruta de corrección priorizada</li><li>✔ Compatibilidad con CMS líderes</li></ul>
+          <p class="note">*LIBRAS/LSM opcional mediante partners.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <p>© <span id="y"></span> AccessAbilities Global • <a href="#">Privacidad</a> • <a href="#">Términos</a></p>
+      <p>Síguenos: <a href="https://instagram.com/tu_perfil" aria-label="Instagram">Instagram</a> • <a href="#" aria-label="LinkedIn">LinkedIn</a> • <a href="#" aria-label="YouTube">YouTube</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const HUBSPOT = { portalId: '6189588', formId: 'SEU_FORM_GUID', region: 'na1' };
+  </script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const contrastBtn = document.getElementById('contrast');
+    if(contrastBtn){contrastBtn.addEventListener('click', () => {
+      const high = document.documentElement.getAttribute('data-theme') === 'high';
+      document.documentElement.setAttribute('data-theme', high ? 'normal' : 'high');
+      contrastBtn.setAttribute('aria-pressed', String(!high));
+    });}
+
+    const i18n = { es: { badge:'Widget + Auditoría humana', heroTitle:'Haz tu sitio accesible hoy. Incluye a todas las personas, cumple la ley y vende más.', heroSub:'Accesibilidad automática + auditoría humana. Tu web lista para WCAG en días, no en meses.', ctaPrimary:'Reservar demo gratuita', ctaSecondary:'Prueba gratis 7 días', heroNote:'Compatible con WordPress, Shopify, Wix y sitios a medida. Sin bloqueo de SEO.', whyTitle:'¿Por qué ahora?', why1:'Más del 15% de la población tiene alguna discapacidad. Cada barrera de acceso es una venta perdida.', benefTitle:'Beneficios', benef1:'Cumplimiento legal + reputación ESG', benef2:'Más conversión y alcance', benef3:'Menos riesgo y soporte local', packTitle:'Paquete completo', pack1:'Widget + Auditoría WCAG + Reporte público + Certificado “Sitio Verificado”.', step1t:'1) Instala en minutos', step1d:'Insertamos un script ligero sin afectar el SEO ni la performance.', step2t:'2) Auditoría + correcciones', step2d:'Revisamos WCAG 2.1/2.2 AA, entregamos un plan de mejoras y re-test.', step3t:'3) Certificado + seguimiento', step3d:'Publicamos tu página de conformidad y acompañamos por 90 días.', plansTitle:'Planes y precios (USD)', plansNote:'Ahorra 20–25% pagando anual. Cancela cuando quieras en los planes mensuales.', lawsTitle:'Contexto legal (AR • CL • PY)', testTitle:'Resultados que importan', formTitle:'Reserva tu demo gratuita', formNote:'Completa el formulario y te contactaremos en menos de 24h hábiles.', labelName:'Nombre completo', labelCompany:'Empresa', labelCountry:'País', labelSite:'URL del sitio', labelMsg:'Mensaje', send:'Enviar', security:'Seguridad & Cumplimiento', privacy:'Al enviar, aceptas nuestra política de privacidad y contacto comercial.', best:'Más popular' }, pt:{ badge:'Widget + Auditoria humana', heroTitle:'Torne seu site acessível hoje. Inclua todas as pessoas, cumpra a lei e venda mais.', heroSub:'Acessibilidade automática + auditoria humana. Seu site pronto para WCAG em dias, não meses.', ctaPrimary:'Reservar demo gratuita', ctaSecondary:'Teste grátis 7 dias', heroNote:'Compatível com WordPress, Shopify, Wix e sites sob medida. Sem bloquear SEO.', whyTitle:'Por que agora?', why1:'Mais de 15% da população tem alguma deficiência. Cada barreira de acesso é uma venda perdida.', benefTitle:'Benefícios', benef1:'Conformidade legal + reputação ESG', benef2:'Mais conversão e alcance', benef3:'Menos risco e suporte local', packTitle:'Pacote completo', pack1:'Widget + Auditoria WCAG + Relatório público + Selo “Site Verificado”.', step1t:'1) Instale em minutos', step1d:'Inserimos um script leve sem afetar SEO nem performance.', step2t:'2) Auditoria + correções', step2d:'Revisamos WCAG 2.1/2.2 AA, entregamos plano de melhorias e re‑teste.', step3t:'3) Certificado + acompanhamento', step3d:'Publicamos sua página de conformidade e acompanhamos por 90 dias.', plansTitle:'Planos e preços (USD)', plansNote:'Economize 20–25% no anual. Cancele quando quiser nos planos mensais.', lawsTitle:'Contexto legal (AR • CL • PY)', testTitle:'Resultados que importam', formTitle:'Reserve sua demo gratuita', formNote:'Preencha o formulário e entraremos em contato em até 24h úteis.', labelName:'Nome completo', labelCompany:'Empresa', labelCountry:'País', labelSite:'URL do site', labelMsg:'Mensagem', send:'Enviar', security:'Segurança & Conformidade', privacy:'Ao enviar, você aceita nossa política de privacidade e contato comercial.', best:'Mais popular' } };
+    function setLang(lang){ const dict=i18n[lang]; document.documentElement.lang = lang==='pt'?'pt-BR':'es'; document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); if(dict[k]) el.textContent=dict[k];}); const tgl=document.getElementById('toggleLang'); if(tgl) tgl.setAttribute('aria-pressed', lang==='pt'); localStorage.setItem('lang', lang);} 
+    const tbtn=document.getElementById('toggleLang'); if(tbtn){tbtn.addEventListener('click', ()=>{ const current=localStorage.getItem('lang')||'es'; setLang(current==='es'?'pt':'es');});}
+    setLang(localStorage.getItem('lang')||'es');
+
+    (function(){
+      if(!HUBSPOT || !HUBSPOT.portalId || HUBSPOT.portalId==='YOUR_PORTAL_ID' || !HUBSPOT.formId || HUBSPOT.formId==='YOUR_FORM_ID'){
+        console.warn('HubSpot no preview: defina HUBSPOT.portalId e HUBSPOT.formId.');
+        return;
+      }
+      var s = document.createElement('script'); s.src='https://js.hsforms.net/forms/v2.js'; s.async=true; s.onload=function(){
+        if(window.hbspt){ hbspt.forms.create({ region: HUBSPOT.region||'na1', portalId: HUBSPOT.portalId, formId: HUBSPOT.formId, target: '#hs-form', cssClass:'hs-modern' }); var n=document.getElementById('nativeFormWrap'); if(n) n.style.display='none'; }
+      }; document.body.appendChild(s);
+    })();
+
+    const form = document.getElementById('leadForm'); const statusEl = document.getElementById('formStatus');
+    if(form){ form.addEventListener('submit', async (e)=>{ e.preventDefault(); statusEl.textContent='Enviando… / Enviando…'; const data = Object.fromEntries(new FormData(form).entries()); if(!data.name||!data.email||!data.company||!data.country||!data.site){ statusEl.textContent='Por favor, completa los campos obligatorios.'; statusEl.style.color='#ffcccb'; return;} await new Promise(r=>setTimeout(r,800)); statusEl.textContent='¡Gracias! Te contactaremos en breve.'; statusEl.style.color='#b7ffcf'; form.reset();}); }
+  </script>
+</body>
+</html>
 
